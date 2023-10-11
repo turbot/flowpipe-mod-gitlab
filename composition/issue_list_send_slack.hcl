@@ -8,7 +8,7 @@ pipeline "issue_list_send_slack" {
     #pipeline = gitlab.pipeline.issue_list_by_query
     pipeline = pipeline.issue_list_by_query
     args = {
-      project_id = "${param.gitlab_project_id}"
+      project_id = param.gitlab_project_id
     }
   }
 

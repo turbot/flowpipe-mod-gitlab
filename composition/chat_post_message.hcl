@@ -26,8 +26,8 @@ pipeline "chat_post_message" {
     }
 
     request_body = jsonencode({
-      channel      = "${param.channel}"
-      text         = "${param.message}"
+      channel      = param.channel
+      text         = param.message
       unfurl_links = false
       unfurl_media = false
     })
