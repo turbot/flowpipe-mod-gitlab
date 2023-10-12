@@ -2,12 +2,6 @@ pipeline "list_issues_by_query" {
   title       = "List Issues by Steampipe Query"
   description = "List issues using a Steampipe query."
 
-  param "token" {
-    type        = string
-    description = "GitHub personal access token."
-    default     = var.token
-  }
-
   param "project_id" {
     type        = string
     description = "Project ID to list issues in."

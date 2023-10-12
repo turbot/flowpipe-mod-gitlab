@@ -1,4 +1,4 @@
-variable "token" {
+variable "access_token" {
   type        = string
-  description = "GitLab personal access token to authenticate to the GitLab APIs. Examples: glpat-ABC123_456."
+  description = "GitLab personal, project, or group access token to authenticate to the API. Examples: glpat-ABC123_456-789."
 }

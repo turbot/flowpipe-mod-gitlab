@@ -63,7 +63,7 @@ Pipelines have [input variables](https://flowpipe.io/docs/using-flowpipe/mod-var
 - Pass in a value on the command line:
 
   ```shell
-  flowpipe pipeline run user_get_current --pipeline-arg token="ghp_Abc123"
+  flowpipe pipeline run user_get_current --pipeline-arg access_token="ghp_Abc123"
   ```
 
 These are only some of the ways you can set variables. For a full list, please see [Passing Input Variables](https://flowpipe.io/docs/using-flowpipe/mod-variables#passing-input-variables).

@@ -2,10 +2,10 @@ pipeline "create_issue" {
   title       = "Create Issue"
   description = "Create a new issue."
 
-  param "token" {
+  param "access_token" {
     type        = string
-    description = "GitHub personal access token."
-    default     = var.token
+    description = "GitHub personal, project, or group access token."
+    default     = var.access_token
   }
 
   param "project_id" {
@@ -29,7 +29,7 @@ pipeline "create_issue" {
 
     request_headers = {
       Content-Type  = "application/json"
-      Authorization = "Bearer ${param.token}"
+      Authorization = "Bearer ${param.access_token}"
     }
 
     request_body = jsonencode({

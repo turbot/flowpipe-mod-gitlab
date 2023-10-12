@@ -2,10 +2,10 @@ pipeline "list_issues" {
   title       = "List Issues"
   description = "List issues."
 
-  param "token" {
+  param "access_token" {
     type        = string
-    description = "GitHub personal access token."
-    default     = var.token
+    description = "GitHub personal, project, or group access token."
+    default     = var.access_token
   }
 
   param "project_id" {
@@ -19,7 +19,7 @@ pipeline "list_issues" {
 
     request_headers = {
       Content-Type  = "application/json"
-      Authorization = "Bearer ${param.token}"
+      Authorization = "Bearer ${param.access_token}"
     }
 
     request_body = jsonencode({
