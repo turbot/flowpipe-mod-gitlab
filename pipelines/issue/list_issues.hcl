@@ -10,7 +10,7 @@ pipeline "list_issues" {
 
   param "project_id" {
     type        = string
-    description = "Project ID to list issues in."
+    description = "The ID of the project."
   }
 
   step "http" "list_issues" {

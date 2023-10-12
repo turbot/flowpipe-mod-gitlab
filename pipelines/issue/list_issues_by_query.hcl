@@ -4,7 +4,7 @@ pipeline "list_issues_by_query" {
 
   param "project_id" {
     type        = string
-    description = "Project ID to list issues in."
+    description = "The ID of the project."
   }
 
   step "query" "list_issues_by_query" {
