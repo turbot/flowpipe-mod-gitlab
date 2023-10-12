@@ -4,7 +4,7 @@ pipeline "list_issues" {
 
   param "access_token" {
     type        = string
-    description = "GitHub personal, project, or group access token."
+    description = "GitLab personal, project, or group access token."
     default     = var.access_token
   }
 

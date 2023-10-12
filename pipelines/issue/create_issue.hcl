@@ -4,7 +4,7 @@ pipeline "create_issue" {
 
   param "access_token" {
     type        = string
-    description = "GitHub personal, project, or group access token."
+    description = "GitLab personal, project, or group access token."
     default     = var.access_token
   }
 
@@ -13,12 +13,12 @@ pipeline "create_issue" {
     description = "Project ID to create the new issue in."
   }
 
-  param "issue_title" {
+  param "title" {
     type        = string
     description = "New issue title."
   }
 
-  param "issue_description" {
+  param "description" {
     type        = string
     description = "New issue description."
   }
@@ -33,8 +33,8 @@ pipeline "create_issue" {
     }
 
     request_body = jsonencode({
-      title = "${param.issue_title}"
-      description = "${param.issue_description}"
+      title = "${param.title}"
+      description = "${param.description}"
     })
   }
 
