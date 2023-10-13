@@ -113,25 +113,14 @@ pipeline "create_issue" {
       Authorization = "Bearer ${param.access_token}"
     }
 
-    # TODO: This doesn't work since GitLab API doesn't accept null for all properties
-    request_body = jsonencode({
-      assignee_id                             = try(param.assignee_id, null)
-      assignee_ids                            = try(param.assignee_ids, null)
-      confidential                            = try(param.confidential, null)
-      created_at                              = try(param.created_at, null)
-      description                             = try(param.description, null)
-      discussion_to_resolve                   = try(param.discussion_to_resolve, null)
-      due_date                                = try(param.due_date, null)
-      epic_id                                 = try(param.epic_id, null)
-      epic_iid                                = try(param.epic_iid, null)
-      iid                                     = try(param.iid, null)
-      issue_type                              = try(param.issue_type, null)
-      labels                                  = try(param.labels, null)
-      merge_request_to_resolve_discussions_of = try(param.merge_request_to_resolve_discussions_of, null)
-      milestone_id                            = try(param.milestone_id, null)
-      title                                   = "${param.title}"
-      weight                                  = try(param.weight, null)
-    })
+    request_body = jsonencode(
+      tomap(
+        merge(
+          { title = param.title },
+          { for name, value in param : name => value if value != null }
+        )
+      )
+    )
   }
 
   output "issue" {
