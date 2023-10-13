@@ -6,6 +6,8 @@ pipeline "get_project" {
     type        = string
     description = "GitLab personal, project, or group access token."
     default     = var.access_token
+    # TODO: Add once supported
+    #sensitive  = true
   }
 
   param "project_id" {
