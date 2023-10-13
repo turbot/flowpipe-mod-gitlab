@@ -113,14 +113,7 @@ pipeline "create_issue" {
       Authorization = "Bearer ${param.access_token}"
     }
 
-    request_body = jsonencode(
-      tomap(
-        merge(
-          { title = param.title },
-          { for name, value in param : name => value if value != null }
-        )
-      )
-    )
+    request_body = jsonencode({ for name, value in param : name => value if value != null })
   }
 
   output "issue" {
