@@ -2,7 +2,7 @@
 repository: "https://gitlab.com/turbot/flowpipe-mod-gitlab"
 ---
 
-# GitLab Library Mod for Flowpipe
+# GitLab Mod for Flowpipe
 
 A collection of [Flowpipe](https://flowpipe.io) pipelines that can be used to:
 - Create issues
@@ -46,6 +46,10 @@ It's recommended to configure credentials through [input variables](https://flow
 
 **Note:** Credentials can also be passed in each pipeline run with `--pipeline-args access_token=glpat_Token123`.
 
+Additional input variables may be defined in the mod's `variables.hcl` file that can be configured to better match your environment and requirements.
+
+Variables with defaults set do not need to be explicitly set, but it may be helpful to override them.
+
 ### Usage
 
 Start the Flowpipe server to get started:
@@ -57,45 +61,33 @@ flowpipe service start
 Run a pipeline:
 
 ```sh
-flowpipe pipeline run list_projects --execution-mode sychronous
+flowpipe pipeline run list_projects
 ```
 
-## Passing pipeline args
+## Passing pipeline arguments
 
 To pass values into pipeline [parameters](https://flowpipe.io/docs/using-flowpipe/pipeline-parameters), use the following syntax:
 
 ```sh
-flowpipe pipeline run list_projects --pipeline-arg membership=true --pipeline-arg visibility=internal --execution-mode synchronous
+flowpipe pipeline run list_projects --pipeline-arg membership=true
 ```
 
 Multiple pipeline args can be passed in with separate `--pipeline-arg` flags.
 
-For more information on passing arguments, please see [Pipeline Args]((https://flowpipe.io/docs/using-flowpipe/pipeline-arguments))
-
-## Variables
-
-Additional input variables may be defined in the mod's `variables.hcl` file that can be configured to better match your environment and requirements.
-
-Variables with defaults set do not need to be explicitly set, but it may be helpful to override them.
-
-## Execution mode
-
-By default, pipelines run in asynchronous mode, which results in outputs being stored in `~/.flowpipe/output/exec_<execution_id>.json`.
-
-If you instead want to view the outputs directly in your terminal, set `--execution-mode=synchronous`.
+For more information on passing arguments, please see [Pipeline Args](https://flowpipe.io/docs/using-flowpipe/pipeline-arguments).
 
 ## Contributing
 
 If you have an idea for additional controls or just want to help maintain and extend this mod ([or others](https://gitlab.com/topics/flowpipe-mod)) we would love you to join the community and start contributing.
 
-- **[Join our Slack community →](https://flowpipe.io/community/join)** and hang out with other Mod developers.
+- **[Join #flowpipe in our Slack community ](https://flowpipe.io/community/join)**
 
 Please see the [contribution guidelines](https://gitlab.com/turbot/flowpipe/blob/main/CONTRIBUTING.md) and our [code of conduct](https://gitlab.com/turbot/flowpipe/blob/main/CODE_OF_CONDUCT.md).
 
 Want to help but not sure where to start? Pick up one of the `help wanted` issues:
 
 - [Flowpipe](https://gitlab.com/turbot/flowpipe/labels/help%20wanted)
-- [GitLab Library Mod](https://gitlab.com/turbot/flowpipe-mod-gitlab/labels/help%20wanted)
+- [GitLab Mod](https://gitlab.com/turbot/flowpipe-mod-gitlab/labels/help%20wanted)
 
 ## License
 
