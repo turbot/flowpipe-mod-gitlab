@@ -1,36 +1,104 @@
-# flowpipe-mod-gitlab
+---
+repository: "https://gitlab.com/turbot/flowpipe-mod-gitlab"
+---
 
-## Pipelines
+# GitLab Library Mod for Flowpipe
 
-| MOD        | NAME                                          | DESCRIPTION                                                                            |
-|------------|-----------------------------------------------|----------------------------------------------------------------------------------------|
-| gitlab_mod | gitlab_mod.pipeline.issue_add_assignee        | Add assignee(s) to an issue in a repository.                                           |
-| gitlab_mod | gitlab_mod.pipeline.issue_close               | Close an Issue in a repository.                                                        |
-| gitlab_mod | gitlab_mod.pipeline.issue_comment             | Create a comment on an Issue.                                                          |
-| gitlab_mod | gitlab_mod.pipeline.issue_create              | Create a new issue.                                                                    |
-| gitlab_mod | gitlab_mod.pipeline.issue_get                 | Get issue details from the current repository by number.                               |
-| gitlab_mod | gitlab_mod.pipeline.issue_list                | List of Open issues in the repository.                                                 |
-| gitlab_mod | gitlab_mod.pipeline.issue_search              | Find an issue in a repository.                                                         |
-| gitlab_mod | gitlab_mod.pipeline.issue_update              | Update an Issue in a repository.                                                       |
-| gitlab_mod | gitlab_mod.pipeline.list_issues_with_sp_query | List of all Open issues in the repository using steampipe query.                       |
-| gitlab_mod | gitlab_mod.pipeline.pull_request_close        | Close a pull request in a repository.                                                  |
-| gitlab_mod | gitlab_mod.pipeline.pull_request_comment      | Create a comment on pull request.                                                      |
-| gitlab_mod | gitlab_mod.pipeline.pull_request_create       | Create a Pull request.                                                                 |
-| gitlab_mod | gitlab_mod.pipeline.pull_request_get          | Get the details of a Pull Request.                                                     |
-| gitlab_mod | gitlab_mod.pipeline.pull_request_list         | List of Open Pull Requests in the repository.                                          |
-| gitlab_mod | gitlab_mod.pipeline.pull_request_search       | Find a pull request in a repository.                                                   |
-| gitlab_mod | gitlab_mod.pipeline.pull_request_update       | Update a Pull Request in a repository.                                                 |
-| gitlab_mod | gitlab_mod.pipeline.repository_create         | Create a new repository.                                                               |
-| gitlab_mod | gitlab_mod.pipeline.repository_get            | Get the details of a given repository by the owner and repository name.                |
-| gitlab_mod | gitlab_mod.pipeline.repository_get_owner      | Get the details of a repository owner (ie. either a User or an Organization) by login. |
-| gitlab_mod | gitlab_mod.pipeline.repository_search         | Find a repository.                                                                     |
-| gitlab_mod | gitlab_mod.pipeline.user_get_by_login         | Get the details of a user by login.                                                    |
-| gitlab_mod | gitlab_mod.pipeline.user_get_current          | Get the details of currently authenticated user.                                       |
+A collection of [Flowpipe](https://flowpipe.io) pipelines that can be used to:
+- Create issues
+- Close issues
+- Share projects with groups
+- And more!
 
-## Triggers
+## Documentation
 
-| PIPELINE                                | TYPE     | NAME                                                   | DESCRIPTION                                                                     |
-|-----------------------------------------|----------|--------------------------------------------------------|---------------------------------------------------------------------------------|
-| gitlab_mod.pipeline.pull_request_list   | interval | gitlab_mod.trigger.interval.pull_request_list          | Get the count and list of open pull requests in a repository at daily interval. |
-| gitlab_mod.pipeline.repository_get      | schedule | gitlab_mod.trigger.schedule.stargazer_count            | Get the stargazers count of a repository (on cron) at 9AM every Monday UTC.     |
-| gitlab_mod.pipeline.router_issue_create | http     | gitlab_mod.trigger.http.create_issue_event_add_comment | Add a comment on a newly opened issue based on live event issues.opened         |
+- **[Pipelines →](https://hub.flowpipe.io/mods/turbot/gitlab/pipelines)**
+- **[Triggers →](https://hub.flowpipe.io/mods/turbot/gitlab/triggers)**
+
+## Getting started
+
+### Installation
+
+Download and install Flowpipe (https://flowpipe.io/downloads). Or use Brew:
+
+```sh
+brew tap turbot/tap
+brew install flowpipe
+```
+
+Clone:
+
+```sh
+git clone https://gitlab.com/turbot/flowpipe-mod-gitlab.git
+cd flowpipe-mod-gitlab
+```
+
+### Configuration
+
+Configure your credentials:
+
+```sh
+cp flowpipe.pvars.example flowpipe.pvars
+vi flowpipe.pvars
+```
+
+It's recommended to configure credentials through [input variables](https://flowpipe.io/docs/using-flowpipe/mod-variables) by setting them in the `flowpipe.pvars` file.
+
+**Note:** Credentials can also be passed in each pipeline run with `--pipeline-args access_token=glpat_Token123`.
+
+### Usage
+
+Start the Flowpipe server to get started:
+
+```sh
+flowpipe service start
+```
+
+Run a pipeline:
+
+```sh
+flowpipe pipeline run list_projects --execution-mode sychronous
+```
+
+## Passing pipeline args
+
+To pass values into pipeline [parameters](https://flowpipe.io/docs/using-flowpipe/pipeline-parameters), use the following syntax:
+
+```sh
+flowpipe pipeline run list_projects --pipeline-arg membership=true --pipeline-arg visibility=internal --execution-mode synchronous
+```
+
+Multiple pipeline args can be passed in with separate `--pipeline-arg` flags.
+
+For more information on passing arguments, please see [Pipeline Args]((https://flowpipe.io/docs/using-flowpipe/pipeline-arguments))
+
+## Variables
+
+Additional input variables may be defined in the mod's `variables.hcl` file that can be configured to better match your environment and requirements.
+
+Variables with defaults set do not need to be explicitly set, but it may be helpful to override them.
+
+## Execution mode
+
+By default, pipelines run in asynchronous mode, which results in outputs being stored in `~/.flowpipe/output/exec_<execution_id>.json`.
+
+If you instead want to view the outputs directly in your terminal, set `--execution-mode=synchronous`.
+
+## Contributing
+
+If you have an idea for additional controls or just want to help maintain and extend this mod ([or others](https://gitlab.com/topics/flowpipe-mod)) we would love you to join the community and start contributing.
+
+- **[Join our Slack community →](https://flowpipe.io/community/join)** and hang out with other Mod developers.
+
+Please see the [contribution guidelines](https://gitlab.com/turbot/flowpipe/blob/main/CONTRIBUTING.md) and our [code of conduct](https://gitlab.com/turbot/flowpipe/blob/main/CODE_OF_CONDUCT.md).
+
+Want to help but not sure where to start? Pick up one of the `help wanted` issues:
+
+- [Flowpipe](https://gitlab.com/turbot/flowpipe/labels/help%20wanted)
+- [GitLab Library Mod](https://gitlab.com/turbot/flowpipe-mod-gitlab/labels/help%20wanted)
+
+## License
+
+This mod is licensed under the [Apache License 2.0](https://gitlab.com/turbot/flowpipe-mod-gitlab/blob/main/LICENSE).
+
+Flowpipe is licensed under the [AGPLv3](https://gitlab.com/turbot/flowpipe/blob/main/LICENSE).
