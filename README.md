@@ -1,7 +1,3 @@
----
-repository: "https://gitlab.com/turbot/flowpipe-mod-gitlab"
----
-
 # GitLab Library Mod for Flowpipe
 
 A collection of [Flowpipe](https://flowpipe.io) pipelines that can be used to:
