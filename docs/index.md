@@ -1,5 +1,5 @@
 ---
-repository: "https://gitlab.com/turbot/flowpipe-mod-gitlab"
+repository: "https://github.com/turbot/flowpipe-mod-gitlab"
 ---
 
 # GitLab Mod for Flowpipe
@@ -29,7 +29,7 @@ brew install flowpipe
 Clone:
 
 ```sh
-git clone https://gitlab.com/turbot/flowpipe-mod-gitlab.git
+git clone https://github.com/turbot/flowpipe-mod-gitlab.git
 cd flowpipe-mod-gitlab
 ```
 
@@ -78,19 +78,19 @@ For more information on passing arguments, please see [Pipeline Args](https://fl
 
 ## Contributing
 
-If you have an idea for additional controls or just want to help maintain and extend this mod ([or others](https://gitlab.com/topics/flowpipe-mod)) we would love you to join the community and start contributing.
+If you have an idea for additional controls or just want to help maintain and extend this mod ([or others](https://github.com/topics/flowpipe-mod)) we would love you to join the community and start contributing.
 
 - **[Join #flowpipe in our Slack community ](https://flowpipe.io/community/join)**
 
-Please see the [contribution guidelines](https://gitlab.com/turbot/flowpipe/blob/main/CONTRIBUTING.md) and our [code of conduct](https://gitlab.com/turbot/flowpipe/blob/main/CODE_OF_CONDUCT.md).
+Please see the [contribution guidelines](https://github.com/turbot/flowpipe/blob/main/CONTRIBUTING.md) and our [code of conduct](https://github.com/turbot/flowpipe/blob/main/CODE_OF_CONDUCT.md).
 
 Want to help but not sure where to start? Pick up one of the `help wanted` issues:
 
-- [Flowpipe](https://gitlab.com/turbot/flowpipe/labels/help%20wanted)
-- [GitLab Mod](https://gitlab.com/turbot/flowpipe-mod-gitlab/labels/help%20wanted)
+- [Flowpipe](https://github.com/turbot/flowpipe/labels/help%20wanted)
+- [GitLab Mod](https://github.com/turbot/flowpipe-mod-gitlab/labels/help%20wanted)
 
 ## License
 
-This mod is licensed under the [Apache License 2.0](https://gitlab.com/turbot/flowpipe-mod-gitlab/blob/main/LICENSE).
+This mod is licensed under the [Apache License 2.0](https://github.com/turbot/flowpipe-mod-gitlab/blob/main/LICENSE).
 
-Flowpipe is licensed under the [AGPLv3](https://gitlab.com/turbot/flowpipe/blob/main/LICENSE).
+Flowpipe is licensed under the [AGPLv3](https://github.com/turbot/flowpipe/blob/main/LICENSE).
