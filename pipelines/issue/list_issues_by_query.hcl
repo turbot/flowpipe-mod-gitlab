@@ -4,7 +4,7 @@ pipeline "list_issues_by_query" {
 
   param "project_id" {
     type        = string
-    description = "The ID of the project."
+    description = local.access_token_param_description
   }
 
   step "query" "list_issues_by_query" {

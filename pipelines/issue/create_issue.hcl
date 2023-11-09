@@ -4,7 +4,7 @@ pipeline "create_issue" {
 
   param "access_token" {
     type        = string
-    description = "GitLab personal, project, or group access token."
+    description = local.access_token_param_description
     default     = var.access_token
     # TODO: Add once supported
     #sensitive   = true
@@ -12,7 +12,7 @@ pipeline "create_issue" {
 
   param "project_id" {
     type        = string
-    description = "The ID of the project."
+    description = local.access_token_param_description
   }
 
   param "assignee_id" {

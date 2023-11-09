@@ -4,10 +4,8 @@ pipeline "list_projects" {
 
   param "access_token" {
     type        = string
-    description = "GitLab personal, project, or group access token."
+    description = local.access_token_param_description
     default     = var.access_token
-    # TODO: Add once supported
-    #sensitive  = true
   }
 
   param "membership" {
