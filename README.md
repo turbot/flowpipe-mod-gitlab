@@ -6,7 +6,7 @@ A collection of [Flowpipe](https://flowpipe.io) pipelines that can be used to:
 - Share projects with groups
 - And more!
 
-![image](https://github.com/turbot/flowpipe-mod-gitlab/blob/staging/docs/images/flowpipe_test_run.png?raw=true)
+![image](https://github.com/turbot/flowpipe-mod-gitlab/blob/main/docs/images/flowpipe_test_run.png?raw=true)
 
 ## Documentation
 
