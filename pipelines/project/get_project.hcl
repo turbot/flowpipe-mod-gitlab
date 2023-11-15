@@ -25,6 +25,6 @@ pipeline "get_project" {
 
   output "project" {
     description = "Project details."
-    value = step.http.get_project.response_body
+    value       = step.http.get_project.response_body
   }
 }

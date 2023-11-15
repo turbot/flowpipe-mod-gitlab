@@ -65,7 +65,7 @@ pipeline "create_issue" {
 
   param "iid" {
     type        = number
-    description = "The internal ID of the project’s issue (requires administrator or project owner rights)."
+    description = "The internal ID of the project's issue (requires administrator or project owner rights)."
     optional    = true
   }
 
@@ -89,7 +89,7 @@ pipeline "create_issue" {
 
   param "milestone_id" {
     type        = number
-    description = "The global ID of a milestone to assign an issue. To find the milestone_id associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue’s details."
+    description = "The global ID of a milestone to assign an issue. To find the milestone_id associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue's details."
     optional    = true
   }
 

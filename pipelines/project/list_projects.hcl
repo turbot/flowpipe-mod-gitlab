@@ -26,21 +26,13 @@ pipeline "list_projects" {
     optional    = true
   }
 
-
   step "http" "list_projects" {
     method = "get"
-    url    = "https://gitlab.com/api/v4/projects"
-
-    request_headers = {
-      Content-Type  = "application/json"
-      Authorization = "Bearer ${param.access_token}"
-    }
-
-    request_body = jsonencode({ for name, value in param : name => value if value != null })
+    url    = "https://gitlab.com/api/v4/projects?${join("&", [for name, value in param : "${name}=${value}" if value != null])}"
   }
 
   output "projects" {
     description = "A list of projects."
-    value = step.http.list_projects.response_body
+    value       = step.http.list_projects.response_body
   }
 }
