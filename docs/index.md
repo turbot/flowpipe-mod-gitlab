@@ -5,6 +5,7 @@ repository: "https://github.com/turbot/flowpipe-mod-gitlab"
 # GitLab Mod for Flowpipe
 
 A collection of [Flowpipe](https://flowpipe.io) pipelines that can be used to:
+
 - Create issues
 - Close issues
 - Share projects with groups
