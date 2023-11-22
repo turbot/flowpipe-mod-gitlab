@@ -13,21 +13,9 @@ pipeline "list_issues" {
     description = local.access_token_param_description
   }
 
-  param "page" {
-    type        = number
-    description = local.page_param_description
-    default     = 1
-  }
-
-  param "per_page" {
-    type        = number
-    description = local.per_page_param_description
-    default     = 20
-  }
-
   step "http" "list_issues" {
     method = "get"
-    url    = "https://gitlab.com/api/v4/projects/${param.project_id}/issues?page=${param.page}&per_page=${param.per_page}"
+    url    = "https://gitlab.com/api/v4/projects/${param.project_id}/issues?page=1&per_page=100"
 
     request_headers = {
       Content-Type  = "application/json"
@@ -36,7 +24,7 @@ pipeline "list_issues" {
 
     loop {
       until = result.response_headers["X-Next-Page"] == ""
-      url   = "https://gitlab.com/api/v4/projects/${param.project_id}/issues?page=${result.response_headers["X-Next-Page"]}&per_page=${param.per_page}"
+      url   = "https://gitlab.com/api/v4/projects/${param.project_id}/issues?page=${result.response_headers["X-Next-Page"]}&per_page=100"
     }
   }
 
