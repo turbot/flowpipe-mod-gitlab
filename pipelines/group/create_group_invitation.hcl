@@ -38,7 +38,6 @@ pipeline "create_group_invitation" {
         * Maintainer (40)
         * Owner (50). Valid for projects in GitLab 14.9 and later.
     EOD
-    default     = "30"
   }
 
   step "http" "create_group_invitation" {
