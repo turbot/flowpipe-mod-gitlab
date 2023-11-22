@@ -1,6 +1,6 @@
 pipeline "create_group_invitation" {
   title       = "Create Group Invitation"
-  description = "Add a member to a group."
+  description = "Adds a new member."
 
   param "access_token" {
     type        = string
@@ -10,12 +10,12 @@ pipeline "create_group_invitation" {
 
   param "group_id" {
     type        = string
-    description = "Group ID"
+    description = "The ID or URL-encoded path of the group owned by the authenticated user."
   }
 
   param "email" {
-    type        = string
-    description = "The email of the new member. Either 'email' or 'user_id' must be provided."
+    type        = list(string)
+    description = "The email of the new member or multiple emails separated by commas."
   }
 
   param "access_level" {
@@ -36,7 +36,7 @@ pipeline "create_group_invitation" {
 
   step "http" "create_group_invitation" {
     method = "post"
-    url    = "https://gitlab.example.com/api/v4/groups/${param.group_id}/invitations"
+    url    = "https://gitlab.com/api/v4/groups/${param.group_id}/invitations"
 
 
     request_headers = {
