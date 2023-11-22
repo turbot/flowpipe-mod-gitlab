@@ -13,15 +13,15 @@ pipeline "create_group_invitation" {
     description = "The ID or URL-encoded path of the group owned by the authenticated user."
   }
 
-  param "email" {
+  param "emails" {
     type        = list(string)
-    description = "The email of the new member or multiple emails separated by commas. Either 'email' or 'user_id' must be provided."
+    description = "The email of the new member or multiple emails separated by commas. At least one email or user ID must be provided."
     optional    = true
   }
 
-  param "user_id" {
+  param "user_ids" {
     type        = list(string)
-    description = "The ID of the new member or multiple IDs separated by commas. Either 'email' or 'user_id' must be provided."
+    description = "The ID of the new member or multiple IDs separated by commas. At least one email or user ID must be provided."
     optional    = true
   }
 
@@ -52,8 +52,8 @@ pipeline "create_group_invitation" {
 
     request_body = jsonencode({
       access_level = param.access_level
-      email        = param.email
-      user_id      = param.user_id
+      email        = param.emails
+      user_id      = param.user_ids
     })
   }
 
