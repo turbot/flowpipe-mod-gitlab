@@ -15,7 +15,14 @@ pipeline "create_group_invitation" {
 
   param "email" {
     type        = list(string)
-    description = "The email of the new member or multiple emails separated by commas."
+    description = "The email of the new member or multiple emails separated by commas. Either 'email' or 'user_id' must be provided."
+    optional    = true
+  }
+
+  param "user_id" {
+    type        = list(string)
+    description = "The ID of the new member or multiple IDs separated by commas. Either 'email' or 'user_id' must be provided."
+    optional    = true
   }
 
   param "access_level" {
@@ -47,6 +54,7 @@ pipeline "create_group_invitation" {
     request_body = jsonencode({
       access_level = param.access_level
       email        = param.email
+      user_id      = param.user_id
     })
   }
 
