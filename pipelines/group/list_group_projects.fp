@@ -10,7 +10,7 @@ pipeline "list_group_projects" {
 
   param "group_id" {
     type        = string
-    description = "	The ID or URL-encoded path of the group owned by the authenticated user."
+    description = "The ID or URL-encoded path of the group owned by the authenticated user."
   }
 
   param "visibility" {
