@@ -15,20 +15,21 @@ pipeline "list_issues" {
 
   step "http" "list_issues" {
     method = "get"
-    url    = "https://gitlab.com/api/v4/projects/${param.project_id}/issues"
+    url    = "https://gitlab.com/api/v4/projects/${param.project_id}/issues?page=1&per_page=100"
 
     request_headers = {
       Content-Type  = "application/json"
       Authorization = "Bearer ${param.access_token}"
     }
 
-    request_body = jsonencode({
-      search = "hello"
-    })
+    loop {
+      until = result.response_headers["X-Next-Page"] == ""
+      url   = "https://gitlab.com/api/v4/projects/${param.project_id}/issues?page=${result.response_headers["X-Next-Page"]}&per_page=100"
+    }
   }
 
   output "issues" {
     description = "A list of issues."
-    value       = step.http.list_issues.response_body
+    value       = flatten([for page, issues in step.http.list_issues : issues.response_body])
   }
 }

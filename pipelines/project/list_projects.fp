@@ -28,11 +28,16 @@ pipeline "list_projects" {
 
   step "http" "list_projects" {
     method = "get"
-    url    = "https://gitlab.com/api/v4/projects?${join("&", [for name, value in param : "${name}=${value}" if value != null])}"
+    url    = "https://gitlab.com/api/v4/projects?page=1&per_page=100&${join("&", [for name, value in param : "${name}=${value}" if value != null])}"
+
+    loop {
+      until = result.response_headers["X-Next-Page"] == ""
+      url   = "https://gitlab.com/api/v4/projects?page=${result.response_headers["X-Next-Page"]}&per_page=100&${join("&", [for name, value in param : "${name}=${value}" if value != null])}"
+    }
   }
 
   output "projects" {
     description = "A list of projects."
-    value       = step.http.list_projects.response_body
+    value       = flatten([for page, projects in step.http.list_projects : projects.response_body])
   }
 }

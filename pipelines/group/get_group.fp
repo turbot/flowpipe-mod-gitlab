@@ -1,6 +1,6 @@
 pipeline "get_group" {
   title       = "Get Group"
-  description = "Get Group details."
+  description = "Get group details."
 
   param "access_token" {
     type        = string
@@ -10,7 +10,7 @@ pipeline "get_group" {
 
   param "group_id" {
     type        = string
-    description = "Group ID"
+    description = "The ID or URL-encoded path of the group owned by the authenticated user."
   }
 
   #  Deprecated, scheduled for removal in API v5.
@@ -23,7 +23,6 @@ pipeline "get_group" {
   step "http" "get_group" {
     method = "get"
     url    = "https://gitlab.com/api/v4/groups/${param.group_id}?with_projects=${param.with_projects}"
-
 
     request_headers = {
       Content-Type  = "application/json"
