@@ -1,6 +1,6 @@
 pipeline "create_group_invitation" {
   title       = "Create Group Invitation"
-  description = "Adds a new member."
+  description = "Adds a new member to the group by email invite."
 
   param "access_token" {
     type        = string

@@ -13,7 +13,7 @@ pipeline "get_group" {
     description = "The ID or URL-encoded path of the group owned by the authenticated user."
   }
 
-  #  Deprecated, scheduled for removal in API v5.
+  # Deprecated, scheduled for removal in API v5.
   param "with_projects" {
     type        = bool
     description = "Include group projects."

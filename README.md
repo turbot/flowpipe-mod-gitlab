@@ -12,7 +12,6 @@ A collection of [Flowpipe](https://flowpipe.io) pipelines that can be used to:
 ## Documentation
 
 - **[Pipelines →](https://hub.flowpipe.io/mods/turbot/gitlab/pipelines)**
-- **[Triggers →](https://hub.flowpipe.io/mods/turbot/gitlab/triggers)**
 
 ## Getting started
 
@@ -37,15 +36,15 @@ cd flowpipe-mod-gitlab
 Configure your credentials:
 
 ```sh
-cp flowpipe.pvars.example flowpipe.pvars
-vi flowpipe.pvars
+cp flowpipe.fpvars.example flowpipe.fpvars
+vi flowpipe.fpvars
 ```
 
-It's recommended to configure credentials through [input variables](https://flowpipe.io/docs/using-flowpipe/mod-variables) by setting them in the `flowpipe.pvars` file.
+It's recommended to configure credentials through [input variables](https://flowpipe.io/docs/using-flowpipe/mod-variables) by setting them in the `flowpipe.fpvars` file.
 
-**Note:** Credentials can also be passed in each pipeline run with `--pipeline-args access_token=glpat_Token123`.
+**Note:** Credentials can also be passed in each pipeline run with `-args access_token=glpat_Token123`.
 
-Additional input variables may be defined in the mod's `variables.hcl` file that can be configured to better match your environment and requirements.
+Additional input variables may be defined in the mod's `variables.fp` file that can be configured to better match your environment and requirements.
 
 Variables with defaults set do not need to be explicitly set, but it may be helpful to override them.
 
@@ -68,10 +67,10 @@ flowpipe pipeline run list_projects
 To pass values into pipeline [parameters](https://flowpipe.io/docs/using-flowpipe/pipeline-parameters), use the following syntax:
 
 ```sh
-flowpipe pipeline run list_projects --pipeline-arg membership=true
+flowpipe pipeline run list_projects --arg membership=true
 ```
 
-Multiple pipeline args can be passed in with separate `--pipeline-arg` flags.
+Multiple pipeline args can be passed in with separate `--arg` flags.
 
 For more information on passing arguments, please see [Pipeline Args](https://flowpipe.io/docs/using-flowpipe/pipeline-arguments).
 

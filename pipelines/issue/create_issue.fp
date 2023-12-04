@@ -6,8 +6,6 @@ pipeline "create_issue" {
     type        = string
     description = local.access_token_param_description
     default     = var.access_token
-    # TODO: Add once supported
-    #sensitive   = true
   }
 
   param "project_id" {
