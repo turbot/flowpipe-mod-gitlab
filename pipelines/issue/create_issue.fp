@@ -2,10 +2,10 @@ pipeline "create_issue" {
   title       = "Create Issue"
   description = "Create a new issue."
 
-  param "access_token" {
+  param "cred" {
     type        = string
-    description = local.access_token_param_description
-    default     = var.access_token
+    description = local.cred_param_description
+    default     = "default"
   }
 
   param "project_id" {
@@ -108,7 +108,7 @@ pipeline "create_issue" {
 
     request_headers = {
       Content-Type  = "application/json"
-      Authorization = "Bearer ${param.access_token}"
+      Authorization = "Bearer ${credential.gitlab[param.cred].token}"
     }
 
     request_body = jsonencode({ for name, value in param : name => value if value != null })
