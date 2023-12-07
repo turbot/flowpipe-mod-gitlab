@@ -2,6 +2,10 @@ pipeline "get_project" {
   title       = "Get Project"
   description = "Get a project by ID."
 
+  tags = {
+    type = "featured"
+  }
+
   param "cred" {
     type        = string
     description = local.cred_param_description
@@ -10,7 +14,7 @@ pipeline "get_project" {
 
   param "project_id" {
     type        = string
-    description = local.access_token_param_description
+    description = local.project_id_param_description
   }
 
   step "http" "get_project" {

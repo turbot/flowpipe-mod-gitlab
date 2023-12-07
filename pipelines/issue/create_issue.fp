@@ -2,6 +2,10 @@ pipeline "create_issue" {
   title       = "Create Issue"
   description = "Create a new issue."
 
+  tags = {
+    type = "featured"
+  }
+
   param "cred" {
     type        = string
     description = local.cred_param_description
@@ -10,7 +14,7 @@ pipeline "create_issue" {
 
   param "project_id" {
     type        = string
-    description = local.access_token_param_description
+    description = local.project_id_param_description
   }
 
   param "assignee_id" {

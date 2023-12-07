@@ -2,6 +2,10 @@ pipeline "list_issues" {
   title       = "List Issues"
   description = "List issues."
 
+  tags = {
+    type = "featured"
+  }
+
   param "cred" {
     type        = string
     description = local.cred_param_description
@@ -10,7 +14,7 @@ pipeline "list_issues" {
 
   param "project_id" {
     type        = string
-    description = local.access_token_param_description
+    description = local.project_id_param_description
   }
 
   step "http" "list_issues" {
