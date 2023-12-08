@@ -4,7 +4,7 @@ mod "gitlab" {
   color         = "#FCA121"
   documentation = file("./docs/index.md")
   icon          = "/images/flowpipe/mods/turbot/gitlab.svg"
-  categories    = ["gitlab"]
+  categories    = ["software development"]
 
   opengraph {
     title       = "GitLab Mod for Flowpipe"
