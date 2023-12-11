@@ -42,7 +42,7 @@ vi flowpipe.fpvars
 
 It's recommended to configure credentials through [input variables](https://flowpipe.io/docs/using-flowpipe/mod-variables) by setting them in the `flowpipe.fpvars` file.
 
-**Note:** Credentials can also be passed in each pipeline run with `-args access_token=glpat_Token123`.
+**Note:** Credentials can also be passed in each pipeline run with `--arg access_token=glpat_Token123`.
 
 Additional input variables may be defined in the mod's `variables.fp` file that can be configured to better match your environment and requirements.
 
