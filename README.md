@@ -1,19 +1,16 @@
 # GitLab Mod for Flowpipe
 
-A collection of [Flowpipe](https://flowpipe.io) pipelines that can be used to:
-
-- Create issues
-- Close issues
-- Share projects with groups
-- And more!
-
-![image](https://github.com/turbot/flowpipe-mod-gitlab/blob/main/docs/images/flowpipe_pipeline_run.png?raw=true)
+GitLab pipeline library for [Flowpipe](https://flowpipe.io), enabling seamless integration of GitLab services into your workflows.
 
 ## Documentation
 
 - **[Pipelines →](https://hub.flowpipe.io/mods/turbot/gitlab/pipelines)**
 
-## Getting started
+## Getting Started
+
+### Requirements
+
+Docker daemon must be installed and running. Please see [Install Docker Engine](https://docs.docker.com/engine/install/) for more information.
 
 ### Installation
 
@@ -31,29 +28,32 @@ git clone https://github.com/turbot/flowpipe-mod-gitlab.git
 cd flowpipe-mod-gitlab
 ```
 
-### Configuration
+### Credentials
 
-Configure your credentials:
+By default, the following environment variables will be used for authentication:
+
+- `GITLAB_TOKEN`
+
+You can also create `credential` resources in configuration files:
 
 ```sh
-cp flowpipe.fpvars.example flowpipe.fpvars
-vi flowpipe.fpvars
+vi ~/.flowpipe/config/gitlab.fpc
 ```
 
-It's recommended to configure credentials through [input variables](https://flowpipe.io/docs/using-flowpipe/mod-variables) by setting them in the `flowpipe.fpvars` file.
+```hcl
+credential "gitlab" "default" {
+  token = "glpat-..."
+}
+```
 
-**Note:** Credentials can also be passed in each pipeline run with `--arg access_token=glpat_Token123`.
-
-Additional input variables may be defined in the mod's `variables.fp` file that can be configured to better match your environment and requirements.
-
-Variables with defaults set do not need to be explicitly set, but it may be helpful to override them.
+For more information on credentials in Flowpipe, please see [Managing Credentials](https://flowpipe.io/docs/run/credentials).
 
 ### Usage
 
-Start the Flowpipe server to get started:
+List pipelines:
 
 ```sh
-flowpipe service start
+flowpipe pipeline list
 ```
 
 Run a pipeline:
@@ -62,33 +62,31 @@ Run a pipeline:
 flowpipe pipeline run list_projects
 ```
 
-## Passing pipeline arguments
-
-To pass values into pipeline [parameters](https://flowpipe.io/docs/using-flowpipe/pipeline-parameters), use the following syntax:
+You can pass in pipeline arguments as well:
 
 ```sh
-flowpipe pipeline run list_projects --arg membership=true
+flowpipe pipeline run get_project --arg 'project_id=52978887'
 ```
 
-Multiple pipeline args can be passed in with separate `--arg` flags.
+To use a specific `credential`, specify the `cred` pipeline argument:
 
-For more information on passing arguments, please see [Pipeline Args](https://flowpipe.io/docs/using-flowpipe/pipeline-arguments).
+```sh
+flowpipe pipeline run get_project --arg 'project_id=52978887' --arg cred=gitlab_prod
+```
 
-## Contributing
+For more examples on how you can run pipelines, please see [Run Pipelines](https://flowpipe.io/docs/run/pipelines).
 
-If you have an idea for additional controls or just want to help maintain and extend this mod ([or others](https://github.com/topics/flowpipe-mod)) we would love you to join the community and start contributing.
+## Open Source & Contributing
 
-- **[Join #flowpipe in our Slack community ](https://flowpipe.io/community/join)**
+This repository is published under the [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0). Please see our [code of conduct](https://github.com/turbot/.github/blob/main/CODE_OF_CONDUCT.md). We look forward to collaborating with you!
 
-Please see the [contribution guidelines](https://github.com/turbot/flowpipe/blob/main/CONTRIBUTING.md) and our [code of conduct](https://github.com/turbot/flowpipe/blob/main/CODE_OF_CONDUCT.md).
+[Flowpipe](https://flowpipe.io) is a product produced from this open source software, exclusively by [Turbot HQ, Inc](https://turbot.com). It is distributed under our commercial terms. Others are allowed to make their own distribution of the software, but cannot use any of the Turbot trademarks, cloud services, etc. You can learn more in our [Open Source FAQ](https://turbot.com/open-source).
+
+## Get Involved
+
+**[Join #flowpipe on Slack →](https://flowpipe.io/community/join)**
 
 Want to help but not sure where to start? Pick up one of the `help wanted` issues:
 
 - [Flowpipe](https://github.com/turbot/flowpipe/labels/help%20wanted)
 - [GitLab Mod](https://github.com/turbot/flowpipe-mod-gitlab/labels/help%20wanted)
-
-## License
-
-This mod is licensed under the [Apache License 2.0](https://github.com/turbot/flowpipe-mod-gitlab/blob/main/LICENSE).
-
-Flowpipe is licensed under the [AGPLv3](https://github.com/turbot/flowpipe/blob/main/LICENSE).

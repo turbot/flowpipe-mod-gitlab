@@ -2,7 +2,7 @@ mod "gitlab" {
   title         = "GitLab"
   description   = "Run pipelines to supercharge your GitLab workflows using Flowpipe."
   color         = "#FCA121"
-  documentation = file("./docs/index.md")
+  documentation = file("./README.md")
   icon          = "/images/mods/turbot/gitlab.svg"
   categories    = ["software development"]
 
