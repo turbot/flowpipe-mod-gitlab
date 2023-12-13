@@ -8,10 +8,6 @@ GitLab pipeline library for [Flowpipe](https://flowpipe.io), enabling seamless i
 
 ## Getting Started
 
-### Requirements
-
-Docker daemon must be installed and running. Please see [Install Docker Engine](https://docs.docker.com/engine/install/) for more information.
-
 ### Installation
 
 Download and install Flowpipe (https://flowpipe.io/downloads). Or use Brew:
@@ -50,6 +46,53 @@ For more information on credentials in Flowpipe, please see [Managing Credential
 
 ### Usage
 
+[Initialize a mod](https://flowpipe.io/docs/build/index#initializing-a-mod):
+
+```sh
+mkdir my_mod
+cd my_mod
+flowpipe mod init
+```
+
+[Install the GitLab mod](https://flowpipe.io/docs/build/mod-dependencies#mod-dependencies) as a dependency:
+
+```sh
+flowpipe mod install github.com/turbot/flowpipe-mod-gitlab
+```
+
+[Use the dependency](https://flowpipe.io/docs/build/write-pipelines/index) in a pipeline step:
+
+```sh
+vi my_pipeline.fp
+```
+
+```hcl
+pipeline "my_pipeline" {
+
+  step "pipeline" "get_project" {
+    pipeline = gitlab.pipeline.get_project
+    args = {
+      project_id = "99999999"
+    }
+  }
+}
+```
+
+[Run the pipeline](https://flowpipe.io/docs/run/pipelines):
+
+```sh
+flowpipe pipeline run my_pipeline
+```
+
+### Developing
+
+Clone:
+
+```sh
+git clone https://github.com/turbot/flowpipe-mod-gitlab.git
+cd flowpipe-mod-gitlab
+```
+
 List pipelines:
 
 ```sh
@@ -59,26 +102,14 @@ flowpipe pipeline list
 Run a pipeline:
 
 ```sh
-flowpipe pipeline run list_projects
-```
-
-You can pass in pipeline arguments as well:
-
-```sh
-flowpipe pipeline run get_project --arg 'project_id=52978887'
+flowpipe pipeline run get_project --arg 'project_id=99999999'
 ```
 
 To use a specific `credential`, specify the `cred` pipeline argument:
 
 ```sh
-flowpipe pipeline run get_project --arg 'project_id=52978887' --arg cred=gitlab_prod
+flowpipe pipeline run get_project --arg 'project_id=99999999' --arg cred=gitlab_profile
 ```
-
-For more examples on how you can run pipelines, please see [Run Pipelines](https://flowpipe.io/docs/run/pipelines).
-
-### Configuration
-
-No additional configuration is required.
 
 ## Open Source & Contributing
 
