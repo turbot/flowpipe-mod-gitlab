@@ -1,11 +1,11 @@
 pipeline "create_group_invitation" {
   title       = "Create Group Invitation"
-  description = "Adds a new member."
+  description = "Adds a new member to the group by email invite."
 
-  param "access_token" {
+  param "cred" {
     type        = string
-    description = local.access_token_param_description
-    default     = var.access_token
+    description = local.cred_param_description
+    default     = "default"
   }
 
   param "group_id" {
@@ -40,7 +40,7 @@ pipeline "create_group_invitation" {
 
     request_headers = {
       Content-Type  = "application/json"
-      Authorization = "Bearer ${param.access_token}"
+      Authorization = "Bearer ${credential.gitlab[param.cred].token}"
     }
 
     request_body = jsonencode({

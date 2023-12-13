@@ -2,10 +2,10 @@ pipeline "list_projects" {
   title       = "List Projects"
   description = "List projects."
 
-  param "access_token" {
+  param "cred" {
     type        = string
-    description = local.access_token_param_description
-    default     = var.access_token
+    description = local.cred_param_description
+    default     = "default"
   }
 
   param "membership" {

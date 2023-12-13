@@ -2,15 +2,19 @@ pipeline "get_project" {
   title       = "Get Project"
   description = "Get a project by ID."
 
-  param "access_token" {
+  tags = {
+    type = "featured"
+  }
+
+  param "cred" {
     type        = string
-    description = local.access_token_param_description
-    default     = var.access_token
+    description = local.cred_param_description
+    default     = "default"
   }
 
   param "project_id" {
     type        = string
-    description = local.access_token_param_description
+    description = local.project_id_param_description
   }
 
   step "http" "get_project" {
@@ -19,7 +23,7 @@ pipeline "get_project" {
 
     request_headers = {
       Content-Type  = "application/json"
-      Authorization = "Bearer ${param.access_token}"
+      Authorization = "Bearer ${credential.gitlab[param.cred].token}"
     }
   }
 

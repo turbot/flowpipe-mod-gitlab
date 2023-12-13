@@ -2,10 +2,10 @@ pipeline "get_group" {
   title       = "Get Group"
   description = "Get group details."
 
-  param "access_token" {
+  param "cred" {
     type        = string
-    description = local.access_token_param_description
-    default     = var.access_token
+    description = local.cred_param_description
+    default     = "default"
   }
 
   param "group_id" {
@@ -13,7 +13,7 @@ pipeline "get_group" {
     description = "The ID or URL-encoded path of the group owned by the authenticated user."
   }
 
-  #  Deprecated, scheduled for removal in API v5.
+  # Deprecated, scheduled for removal in API v5.
   param "with_projects" {
     type        = bool
     description = "Include group projects."
@@ -26,7 +26,7 @@ pipeline "get_group" {
 
     request_headers = {
       Content-Type  = "application/json"
-      Authorization = "Bearer ${param.access_token}"
+      Authorization = "Bearer ${credential.gitlab[param.cred].token}"
     }
   }
 
