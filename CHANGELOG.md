@@ -2,4 +2,4 @@
 
 _What's new?_
 
-- Added 5+ pipeline to enable seamless integration of GitLab services and more. For usage information and a full list of pipelines, please see [GitLab Mod for Flowpipe](https://hub.flowpipe.io/mods/turbot/gitlab).
+- Added 5+ pipelines to make it easy to connect your issues, projects and more. For usage information and a full list of pipelines, please see [GitLab Mod for Flowpipe](https://hub.flowpipe.io/mods/turbot/gitlab).
