@@ -6,10 +6,10 @@ pipeline "get_project" {
     type = "featured"
   }
 
-  param "cred" {
-    type        = string
-    description = local.cred_param_description
-    default     = "default"
+  param "conn" {
+    type        = connection.gitlab
+    description = local.conn_param_description
+    default     = connection.gitlab.default
   }
 
   param "project_id" {
@@ -23,7 +23,7 @@ pipeline "get_project" {
 
     request_headers = {
       Content-Type  = "application/json"
-      Authorization = "Bearer ${credential.gitlab[param.cred].token}"
+      Authorization = "Bearer ${param.conn.token}"
     }
   }
 
