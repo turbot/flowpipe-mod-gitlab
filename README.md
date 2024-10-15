@@ -101,7 +101,7 @@ flowpipe pipeline run get_project --arg 'project_id=99999999'
 To use a specific `connection`, specify the `conn` pipeline argument:
 
 ```sh
-flowpipe pipeline run get_project --arg 'project_id=99999999' --arg conn=gitlab_profile
+flowpipe pipeline run get_project --arg 'project_id=99999999' --arg conn=connection.gitlab.gitlab_profile
 ```
 
 ## Open Source & Contributing
