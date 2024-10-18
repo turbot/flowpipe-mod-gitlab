@@ -3,7 +3,7 @@ pipeline "list_issues" {
   description = "List issues."
 
   tags = {
-    type = "featured"
+    recommended = "true"
   }
 
   param "conn" {

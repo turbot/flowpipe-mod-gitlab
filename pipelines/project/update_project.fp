@@ -3,7 +3,7 @@ pipeline "update_project" {
   description = "Update a project by ID."
 
   tags = {
-    type = "featured"
+    recommended = "true"
   }
 
   param "conn" {

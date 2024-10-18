@@ -3,7 +3,7 @@ pipeline "get_project" {
   description = "Get a project by ID."
 
   tags = {
-    type = "featured"
+    recommended = "true"
   }
 
   param "conn" {
