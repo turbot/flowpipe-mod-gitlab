@@ -2,10 +2,10 @@ pipeline "list_projects" {
   title       = "List Projects"
   description = "List projects."
 
-  param "cred" {
-    type        = string
-    description = local.cred_param_description
-    default     = "default"
+  param "conn" {
+    type        = connection.gitlab
+    description = local.conn_param_description
+    default     = connection.gitlab.default
   }
 
   param "membership" {

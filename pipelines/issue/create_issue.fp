@@ -3,13 +3,13 @@ pipeline "create_issue" {
   description = "Create a new issue."
 
   tags = {
-    type = "featured"
+    recommended = "true"
   }
 
-  param "cred" {
-    type        = string
-    description = local.cred_param_description
-    default     = "default"
+  param "conn" {
+    type        = connection.gitlab
+    description = local.conn_param_description
+    default     = connection.gitlab.default
   }
 
   param "project_id" {
@@ -112,7 +112,7 @@ pipeline "create_issue" {
 
     request_headers = {
       Content-Type  = "application/json"
-      Authorization = "Bearer ${credential.gitlab[param.cred].token}"
+      Authorization = "Bearer ${param.conn.token}"
     }
 
     request_body = jsonencode({ for name, value in param : name => value if value != null })

@@ -2,10 +2,10 @@ pipeline "list_group_projects" {
   title       = "List Group Projects"
   description = "List group projects."
 
-  param "cred" {
-    type        = string
-    description = local.cred_param_description
-    default     = "default"
+  param "conn" {
+    type        = connection.gitlab
+    description = local.conn_param_description
+    default     = connection.gitlab.default
   }
 
   param "group_id" {
@@ -25,7 +25,7 @@ pipeline "list_group_projects" {
 
     request_headers = {
       Content-Type  = "application/json"
-      Authorization = "Bearer ${credential.gitlab[param.cred].token}"
+      Authorization = "Bearer ${param.conn.token}"
     }
 
     loop {
